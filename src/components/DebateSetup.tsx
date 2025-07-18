@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, Users, Gavel, MessageSquare, CheckCircle2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import DebateInterface from "./DebateInterface";
 
 interface DebateSetupProps {
   onBack: () => void;
@@ -15,6 +16,7 @@ const DebateSetup = ({ onBack }: DebateSetupProps) => {
   const [debateType, setDebateType] = useState<string>("");
   const [side, setSide] = useState<string>("");
   const [topic, setTopic] = useState<string>("");
+  const [showDebateInterface, setShowDebateInterface] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,20 +30,29 @@ const DebateSetup = ({ onBack }: DebateSetupProps) => {
       return;
     }
 
-    // Here you would typically start the debate simulation
+    // Start the debate interface
     toast({
       title: "Debate Setup Complete!",
       description: `Starting ${debateType} debate on "${topic}" arguing ${side}.`,
     });
     
-    console.log("Debate configuration:", {
-      debateType,
-      side,
-      topic
-    });
+    setShowDebateInterface(true);
   };
 
   const isFormValid = debateType && side && topic.trim();
+
+  if (showDebateInterface) {
+    return (
+      <DebateInterface 
+        onBack={() => setShowDebateInterface(false)}
+        debateData={{
+          type: debateType,
+          side: side,
+          topic: topic
+        }}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-6">
