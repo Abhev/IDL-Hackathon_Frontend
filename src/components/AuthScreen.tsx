@@ -1,23 +1,60 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Mail } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
+import { useEffect } from 'react';
 
 interface AuthScreenProps {
   onAuthSuccess: () => void;
   onBack: () => void;
 }
 
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAQ2ud7ZrORLPzGcfo0ggKWrk98l7XqKzA",
+  authDomain: "idl-hacka.firebaseapp.com",
+  projectId: "idl-hacka",
+  storageBucket: "idl-hacka.firebasestorage.app",
+  messagingSenderId: "886788594236",
+  appId: "1:886788594236:web:23f0f51816a0b9563b4139",
+  measurementId: "G-WCT33J1F7Z"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
 const AuthScreen = ({ onAuthSuccess, onBack }: AuthScreenProps) => {
-  const handleGoogleAuth = () => {
-    // Placeholder for Google authentication
-    // User will implement actual Google auth functionality
-    console.log("Google authentication would be triggered here");
-    
-    // Simulate successful auth for demo purposes
-    setTimeout(() => {
-      onAuthSuccess();
-    }, 1000);
+  useEffect(() => {
+    // Observe auth state changes
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("User is logged in:", user.displayName);
+        onAuthSuccess();
+      } else {
+        console.log("No user is logged in.");
+      }
+    });
+
+    return () => unsubscribe();
+  }, [onAuthSuccess]);
+
+  const handleGoogleAuth = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      const user = result.user;
+      console.log("User signed in:", user);
+      // onAuthSuccess will be called by the auth state observer
+    } catch (error: any) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error("Google Sign-in Error:", errorCode, errorMessage);
+    }
   };
 
   return (
@@ -58,22 +95,6 @@ const AuthScreen = ({ onAuthSuccess, onBack }: AuthScreenProps) => {
               <span>Continue with Google</span>
             </Button>
             
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-white/20"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-transparent text-gray-400">or</span>
-              </div>
-            </div>
-            
-            <Button
-              variant="outline"
-              className="w-full border-white/20 text-white hover:bg-white/10 py-3 px-4 rounded-xl transition-all duration-200 flex items-center justify-center space-x-3"
-            >
-              <Mail className="w-5 h-5" />
-              <span>Continue with Email</span>
-            </Button>
             
             <p className="text-center text-sm text-gray-400 mt-6">
               By continuing, you agree to our Terms of Service and Privacy Policy
