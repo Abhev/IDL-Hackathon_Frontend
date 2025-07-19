@@ -6,14 +6,14 @@ import AuthScreen from "@/components/AuthScreen";
 import DebateSetup from "@/components/DebateSetup";
 
 const Index = () => {
-  const [currentScreen, setCurrentScreen] = useState<'home' | 'auth' | 'setup'>('home');
+  const [currentScreen, setCurrentScreen] = useState<'home' | 'auth' | 'setup' | 'chat'>('home');
 
   const handleGetStarted = () => {
     setCurrentScreen('auth');
   };
 
   const handleAuthSuccess = () => {
-    setCurrentScreen('setup');
+    setCurrentScreen('chat');
   };
 
   const handleBackToHome = () => {
@@ -26,6 +26,21 @@ const Index = () => {
 
   if (currentScreen === 'setup') {
     return <DebateSetup onBack={handleBackToHome} />;
+  }
+
+  if (currentScreen === 'chat') {
+    return (
+      <div className="h-screen w-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <iframe 
+          src="https://app.relevanceai.com/agents/f1db6c/65646132e250-4c0b-aeb7-60c01a951ad0/eca1ec7e-1b6a-4549-966f-f3da8bdaa337/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%23685FFF&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false" 
+          width="100%" 
+          height="100%" 
+          frameBorder="0" 
+          allow="microphone"
+          className="border-0"
+        />
+      </div>
+    );
   }
 
   return (
