@@ -13,13 +13,12 @@ interface AuthScreenProps {
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAQ2ud7ZrORLPzGcfo0ggKWrk98l7XqKzA",
-  authDomain: "idl-hacka.firebaseapp.com",
+  apiKey: {{API_Key}},
+  authDomain: {{AuthDomain}},
   projectId: "idl-hacka",
   storageBucket: "idl-hacka.firebasestorage.app",
-  messagingSenderId: "886788594236",
-  appId: "1:886788594236:web:23f0f51816a0b9563b4139",
-  measurementId: "G-WCT33J1F7Z"
+  messagingSenderId: {MessagingId},
+  appId: {AppId},
 };
 
 // Initialize Firebase
