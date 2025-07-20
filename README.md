@@ -1,73 +1,32 @@
-# Welcome to your Lovable project
+# Mock Debating AI Agent - Frontend
 
-## Project info
+Welcome to the Mock Debating AI Agent! This application offers a **dynamic and immersive simulation** of various debate formats, letting you **practice your argumentation skills** against an AI opponent. Get ready to hone your rhetoric, develop your critical thinking, and experience the thrill of a debate, all from the comfort of your browser!
 
-**URL**: https://lovable.dev/projects/2a365b33-ad4c-4141-872e-417275c69c4d
+---
 
-## How can I edit this code?
+## About the Project
 
-There are several ways of editing your application.
+This frontend application serves as the **interactive interface** for a sophisticated Mock Debating AI Agent. It's designed to provide a **realistic and engaging simulation experience**, allowing users to participate in debates across different established formats. The AI backend handles the logic, argumentation, and speech generation, while this frontend provides a **seamless user experience** for interaction, speech input, and visual representation of the debate flow.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2a365b33-ad4c-4141-872e-417275c69c4d) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+* **Interactive Debate Interface:** A clean and intuitive UI to follow the debate progression.
+* **Real-time Speech Display:** See AI speeches and your own contributions in real-time.
+* **User Speech Input:** Input your speeches via text or (planned) voice.
+* **Timer Integration:** Built-in timers for speech limits, mimicking real debate scenarios.
+* **Motion Display:** Clearly displays the debate motion for each round.
+* **Speaker Tracking:** Keeps track of who is speaking and whose turn it is.
+* **Customizable Debates:** (Future Feature) Options to set debate length, number of speakers, etc.
+* **Responsive Design:** Optimized for various screen sizes.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Supported Debate Formats
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The Mock Debating AI Agent currently supports the following popular debate formats:
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2a365b33-ad4c-4141-872e-417275c69c4d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+* **Asian Parliamentary (AP):** Experience the dynamic 3-on-3 team debate format with Points of Information (POIs).
+* **British Parliamentary (BP):** Engage in the complex 4-team debate with opening and closing halves, and POIs.
+* **Lincoln-Douglas (LD):** Participate in the values-based, one-on-one debate format, focusing on philosophical arguments.
